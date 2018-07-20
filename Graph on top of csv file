@@ -1,0 +1,19 @@
+from matplotlib import pyplot as plt
+
+import csv
+
+x = []
+y = []
+
+with open('ldl.txt','r') as csvfile:
+    plots = csv.reader(csvfile, delimiter=',')
+    for row in plots:
+        x.append(str(row[0]))
+        y.append(int(row[1]))
+
+plt.plot(x,y, label='LDL levels')
+plt.xlabel('Year')
+plt.ylabel('Results')
+plt.title('Lab results')
+plt.legend()
+plt.show()
