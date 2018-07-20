@@ -1,0 +1,20 @@
+## file to extract only required pdf file.
+
+import PyPDF2
+##from PyPDF2   import   pdfFileReader
+
+PDFfilename = "Dec_2014.pdf" ## file name to be extracted##
+
+pfr = PyPDF2.PdfFileReader(open(PDFfilename, "rb"))  ##PdfFile Reader class which stores information about PDF (  no. of pages,text on pages etc.)
+
+pg1 = pfr.getPage(0)  ## extract page 1
+
+writer = PyPDF2.PdfFileWriter() ## create writer object to write into seperate file
+
+writer.addPage(pg1) ## add pages
+
+NewPDFfilename = "chol_tables.pdf" ## new file name
+
+with open(NewPDFfilename, "wb") as outputStream: ### creating new pdf
+    
+    writer.write(outputStream) # write pages to new pdf
